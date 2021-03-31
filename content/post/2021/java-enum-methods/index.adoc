@@ -4,6 +4,7 @@ description: ""
 featured_image: ""
 tags: ["java","enum"]
 title: "java枚举成员方法"
+slug: "java-enum-methods"
 ---
 
 == 前言
