@@ -1,0 +1,12 @@
+
+= blog for c332030
+
+[source,shell script]
+----
+
+git remote add origin git@github.com:c332030/blog.git
+
+git submodule add git@github.com:c332030/c-hugo-theme-stack.git themes/stack
+git submodule add git@github.com:c332030/c332030.github.io.git public
+
+----
