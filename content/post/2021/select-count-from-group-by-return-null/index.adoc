@@ -1,0 +1,48 @@
+---
+author: c332030
+date: 2021-04-01 19:00:00
+description: ""
+featured_image: ""
+tags: ["count", "group by", "sql", "mysql"]
+title: "使用 count 查询 group by 后的数量返回 null"
+slug: "select-count-from-group-by-return-null"
+---
+
+[source,sql]
+----
+SELECT
+        COUNT(*)
+FROM
+    AUTH_USER u
+    LEFT JOIN
+        AUTH_USER_ROLE_RELATION rr
+            ON u.ID = rr.USER_ID
+    LEFT JOIN
+        AUTH_ROLE r
+            ON rr.ROLE_ID = r.ID
+    WHERE
+        u.CREATOR_USER_ACCOUNT='shunde123'
+    GROUP BY
+        u.ID
+----
+
+[source,sql]
+----
+SELECT
+        COUNT(*)
+    FROM
+        (  SELECT
+            1
+        FROM
+            AUTH_USER u
+        LEFT JOIN
+            AUTH_USER_ROLE_RELATION rr
+                ON u.ID = rr.USER_ID
+        LEFT JOIN
+            AUTH_ROLE r
+                ON rr.ROLE_ID = r.ID
+        WHERE
+            u.CREATOR_USER_ACCOUNT='shunde123'
+        GROUP BY
+            u.ID ) t;
+----
