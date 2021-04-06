@@ -1,33 +1,84 @@
 ---
-title: About
-description: Hugo, the world's fastest framework for building websites
-date: '2019-02-28'
+title: 关于我
+description: 来自长沙的java小哥哥
+date: 2021-04-05
+slug: about
 aliases:
   - about-us
   - about-hugo
   - contact
 license: CC BY-NC-ND
-lastmod: '2020-10-09'
+lastmod: 2021-04-05
 menu:
-    main: 
+    main:
         weight: -90
         pre: user
 ---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+// 简历：工作年限
 
-Hugo makes use of a variety of open source projects including:
+姓名：袁兴旺 +
+性别：男 +
+生日：1996.03 +
+手机：+86-157-175-09433（同微信） +
+邮箱：c332030@gmail.com +
+主页：link:https://github.com/c332030[https://github.com/c332030] +
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+== 教育
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+院校：湖南理工学院 +
+专业：计算机科学与技术 +
+学历：18 级本科 +
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+== 获奖
 
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
+- 软考中级软件设计师，2016.05
+- 程序设计竞赛二等奖
+- 二等奖学金
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+== 技能
+
+- 熟练 java，熟悉 vue、react
+- 熟练 spring，熟悉 spring boot
+- 熟悉 mysql、mongo
+- 熟悉 gradle、maven
+- 熟练 svn/git
+- 熟悉 centos、docker、nginx
+- 熟悉 asciidoc、markdown
+
+== 经历
+
+. 深圳市泰久信息系统股份有限公司，java 开发，2019.03-至今
+
+- 2020.11 公司企学院讲课：《JDK新特性介绍》
+- 2020.07 晋级中级 java 开发
+
+. 赞同科技股份有限公司，java开发，2017.11-2019.02
+
+== 项目
+
+. dl-proxy-spring-mvc，个人项目独立开发，2020.12
+
+- 使用 springmvc，模拟 nginx proxy-pass，解决境外文件下载慢、无法下载问题；
+- link:https://github.com/c332030/dl-proxy-spring-mvc[https://github.com/c332030/dl-proxy-spring-mvc]；
+
+. crm
+
+. etcd-manager-react-ts，个人项目独立开发，2019.11
+
+- etcd v2 web 管理工具，纯静态部署；
+- 使用 react.js, typescript, elementUI；
+- link:https://github.com/c332030/etcd-manager-react-ts[https://github.com/c332030/etcd-manager-react-ts]；
+
+. 储物柜
+
+. 智能柜台
+
+. 银行柜面系统
+
+== 个人
+
+- 强迫症晚期患者；
+- github/gitee 重度用户；
+- 喜欢折腾，gitee 上那么多提交全是自己折腾时的笔记（后续提交到 github）；
+- 有自己的 centos 云服务器，部署了博客以及其他服务等。
