@@ -57,14 +57,9 @@ menu:
 
 == 项目
 
-. dl-proxy-spring-mvc，个人项目独立开发，2020.12
-
-- 使用 springmvc，模拟 nginx proxy-pass，解决境外文件下载慢、无法下载问题；
-- link:https://github.com/c332030/dl-proxy-spring-mvc[https://github.com/c332030/dl-proxy-spring-mvc]；
-
 . crm
 
-. etcd-manager-react-ts，个人项目独立开发，2019.11
+. etcd-manager-react-ts，个人项目独立开发，2019.07
 
 - etcd v2 web 管理工具，纯静态部署；
 - 使用 react.js, typescript, elementUI；
