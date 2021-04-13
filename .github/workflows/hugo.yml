@@ -4,7 +4,7 @@ name: hugo
 on: push
 
 jobs:
-  sync:
+  hugo:
     runs-on: ubuntu-latest
     steps:
       - uses: c332030/hugo-asciidoctor-action@1.0
