@@ -12,6 +12,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           USER: ${{ github.repository_owner }}
           EMAIL: ${{ github.repository_owner }}@gmail.com
+          COMMAND: ${{ secrets.COMMAND }}
         with:
           source-repo: git@github.com:${{ github.repository_owner }}/${{ github.event.repository.name }}.git
           build-repo: git@github.com:${{ github.repository_owner }}/${{ github.repository_owner }}.github.io.git
