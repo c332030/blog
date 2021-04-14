@@ -1,10 +1,12 @@
 ---
-date: 2021-03-21 18:48:00
-description: ""
-featured_image: ""
-tags: ["java","enum"]
 title: "java枚举成员方法"
 slug: "java-enum-methods"
+description: ""
+featured_image: ""
+categories: ["前端"]
+tags: ["java","enum"]
+author: c332030
+date: 2021-03-21 18:48:00
 ---
 
 == 前言
