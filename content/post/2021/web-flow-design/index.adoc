@@ -1,6 +1,5 @@
 ---
 title: "前端流程控制"
-slug: "web-flow-design"
 description: ""
 featured_image: ""
 categories: ["后端"]

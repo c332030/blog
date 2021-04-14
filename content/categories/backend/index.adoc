@@ -1,7 +1,6 @@
 ---
 title: "后端"
 description: "后端开发"
-slug: "backend"
 image: ""
 style:
     background: "#2a9d8f"

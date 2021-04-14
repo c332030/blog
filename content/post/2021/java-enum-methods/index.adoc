@@ -1,6 +1,5 @@
 ---
 title: "java枚举成员方法"
-slug: "java-enum-methods"
 description: ""
 featured_image: ""
 categories: ["前端"]

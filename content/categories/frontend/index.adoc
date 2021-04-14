@@ -1,7 +1,6 @@
 ---
 title: "前端"
 description: "前端开发"
-slug: "frontend"
 image: ""
 style:
     background: "#2a9d8f"
