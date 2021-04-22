@@ -2,8 +2,8 @@
 title: "前端流程控制"
 description: ""
 featured_image: ""
-categories: ["后端"]
-tags: ["前端","流程控制"]
+categories: ["前端"]
+tags: ["流程控制"]
 author: c332030
 date: 2021-03-17 22:00:00
 ---
