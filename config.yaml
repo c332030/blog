@@ -37,8 +37,8 @@ params:
         emoji: 🍥
         subtitle: 登高者必自卑，行远者必自迩，在这个世界上，重要的不是你正站在哪里，而是你正朝什么方向移动！
         avatar:
-            local: true
-            src: img/avatar.png
+            local: false
+            src: /favicon.ico
 
     article:
         math: false
