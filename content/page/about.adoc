@@ -52,22 +52,6 @@ menu:
 
 . 赞同科技股份有限公司，java开发，2017.11-2019.02
 
-== 项目
-
-. crm
-
-. etcd-manager-react-ts，个人项目独立开发，2019.07
-
-- etcd v2 web 管理工具，纯静态部署；
-- 使用 react.js, typescript, elementUI；
-- link:https://github.com/c332030/etcd-manager-react-ts[https://github.com/c332030/etcd-manager-react-ts]；
-
-. 储物柜
-
-. 智能柜台
-
-. 银行柜面系统
-
 == 个人
 
 - 强迫症晚期患者；
