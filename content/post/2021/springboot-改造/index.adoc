@@ -1,0 +1,99 @@
+---
+title: "springboot-改造"
+description: ""
+featured_image: ""
+categories: ["前端"]
+tags: ["java","springboot","源码"]
+author: c332030
+date: 2021-04-18 10:24:00
+---
+
+[source,xml]
+----
+<plugins>
+
+    <!-- update maven-war-plugin to ignored no web.xml error -->
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>
+    </plugin>
+
+    <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+            <!-- exclude spring-boot-devtools, which not disable in war -->
+            <excludeDevtools>true</excludeDevtools>
+        </configuration>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>repackage</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+
+</plugins>
+----
+
+[source,xml]
+----
+<scm>
+    <developerConnection>scm:svn:http://172.16.9.245/svn/sac/project/mopon-config-center/branches/mopon-config-center</developerConnection>
+    <connection>scm:svn:http://172.16.9.245/svn/sac/project/mopon-config-center</connection>
+</scm>
+----
+
+[source,xml]
+----
+<dependencyManagement>
+    <dependencies>
+
+        <!-- defined before spring-boot-dependencies to override dependency in spring-boot-dependencies -->
+        <dependency>
+            <groupId>com.c332030</groupId>
+            <artifactId>config-bom</artifactId>
+            <version>1.0.0</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>2.4.4</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+    </dependencies>
+
+</dependencyManagement>
+----
+
+[source,xml]
+----
+<resources>
+    <resource>
+        <directory>src/main/java</directory>
+        <includes>
+            <include>**/*.xml</include>
+        </includes>
+    </resource>
+    <resource>
+        <directory>src/main/resources</directory>
+    </resource>
+    <resource>
+        <directory>src/main/webapp</directory>
+        <targetPath>META-INF/resources</targetPath>
+    </resource>
+</resources>
+----
