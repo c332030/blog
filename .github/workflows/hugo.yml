@@ -1,7 +1,10 @@
 
 name: hugo
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   hugo:
