@@ -1,0 +1,100 @@
+
+= maven+svn 版本管理
+
+== 前言
+
+公司项目的版本号要么是快照版本（以-SNAPSHOT），要么是发行版本却一直在一个分支上开发，这就会有几个问题：
+
+. maven 默认不下载快照版本的依赖，导致私服上有依赖也下载不下来；
+. 使用发行版本时，却从来不变更版本号，导致依赖有更新却不会去私服上下载；
+. 一直在单个分支上开发就会导致代码有变更时，旧项目无法再取到未变更的依赖，
+我们也没法保留之前上线过的版本的源代码，导致旧版本有需求时，不得不加在在最新的代码上，
+部署也是部署最新的代码，很多不是此次上线的功能也部署上去了。
+
+除却版本定义和单分值的问题外，还有以下问题：
+
+. 项目中的版本号都是手动管理，在 dependencies 中添加模块依赖时，要么采用占位符 ${} 的方式，
+要么直接把版本号写在这里，这就导致后面版本号的更新操作变得困难或无法自动化处理。
+
+== 方案
+
+针对公司项目管理的这些问题，在征得领导的同意后，采取以下措施进行解决：
+
+. 对项目的分支进行标准化管理，重点是功能变更测试完成后需要打 tag（具体见后文）；
+. 对开发分支使用快照版本，为其他开发成员开启下载快照版本的功能；
+. 打完 tag 的项目是发行版本，不再接受代码变更，并且上传依赖到私服；
+. 对项目中所有当前项目的模块依赖直接指定版本号（便于使用自动化工具），并且对其他项目会用到的模块在根目录的 pom.xml 中使用
+dependencyManagement 管理，这样子模块中的模块依赖就不需要指定版本号；
+. 新建一个 pom 类型的项目，名称以 -bom 结尾（参考 spring，不使用 dependencies 的原因是 bom 更好打），
+把 dependencyManagement 中的模块依赖复制过来。
+
+== 具体操作
+
+=== 示例项目介绍
+
+首先介绍下为了写这个建的两个示例项目
+
+==== c-commons
+
+这个项目取名：c-commons，名字参考了 apache 的 commons 项目，顾名思义，存放公共代码的地方
+
+image::images/commons-modules.png[]
+
+==== c-mall
+
+这个是一个商城的项目，这个项目要依赖 c-commons 中的模块：
+
+image::images/mall-modules.png[]
+
+image::images/mall-manager-modules.png[]
+
+=== 1. 调整依赖
+
+首先，所有引用到了模块中子模块的地方都直接指明版本号，这里还分两种情况
+
+. 会被多个模块或者其他项目引用的模块；
+. 只会被某一个模块引用的模块。
+
+先说第二种情况，这种情况下，直接在引用的地方加上版本号。
+
+如果是第一种情况，我们在根目录的 pom.xml 中添加 dependencyManagement 标签，把这些会被多次引用的模块添加到其中，如图：
+
+image::images/c-commons-pom.png[]
+
+image::images/c-commons-dependencyManagement.png[]
+
+而在当前项目其他模块中使用时，可以不指定版本号，此时 idea 左侧出现蓝色跳转符号：
+
+image::images/c-commons-service-dependencies.png[]
+
+当鼠标悬浮在符号上时，可以看到此处虽然没有指定版本号，但是却能够找到确切的版本，这个版本号是在 dependencyManagement 中定义的、
+
+image::images/c-commons-service-dependencies-notice.png[]
+
+我这里还建了一个名为 c-commons-bom 的项目，目的是方便其他项目依赖 c-commons 和统一依赖版本。
+
+可以看到这个项目只有一个 pom.xml 文件：
+
+image::images/c-commons-bom.png[]
+
+细心的人会发现，我在 c-commons 的 pom.xml 文件中加了星号的注释，这样的注释是成对的，包裹着其他项目会依赖的模块。我把这些模块复制到 c-commons-bom 中。
+
+image::images/c-commons-pom-star.png[]
+
+image::images/c-commons-bom-pom.png[]
+
+对 c-commons 和 c-commons-bom 项目分别执行 mvn clean install 命令，把项目存到本地仓库中。
+
+在 c-mall 中以 type=pom 和 scope=import 的方式引用：
+
+image::images/mall-pom.png[]
+
+在 c-mall 中引用 c-commons 中的模块时，可以发现，也不需指定版本号了。
+
+image::images/mall-entity-pom.png[]
+
+点进去，版本号是在本地仓库 c-commons-bom 项目中指定的：
+
+image::images/mall-entity-dependency-c-commons-entity.png[]
+
+dependencyManagement 中还可以加入其他依赖并添加到 c-commons-bom 中，比如 fastjson，这样引入 c-commons 项目模块时，可以统一所有项目的 fastjson 版本。
