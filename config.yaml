@@ -14,6 +14,9 @@ googleAnalytics: UA-155324421-2
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de
 DefaultContentLanguage: zh-cn
 
+# 允许文章时间大于当前时间（避免时区问题无法显示）
+buildfuture: true
+
 permalinks:
     post: /p/:year/:month/:slug/
     page: /:slug/
