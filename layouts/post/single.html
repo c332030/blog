@@ -1,0 +1,34 @@
+{{ define "container-class" }}article-page with-toolbar{{ end }}
+{{ define "main" }}
+
+    <meta name="baidu-site-verification" content="code-3Nah158UAk" />
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?c19a35cccc783e71cdcd7da41b7b33bb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <div id="article-toolbar">
+        <a href="{{ .Site.BaseURL }}" class="back-home">
+            {{ (resources.Get "icons/back.svg").Content | safeHTML }}
+            <span>Back</span>
+        </a>
+    </div>
+
+    {{ partial "article/article.html" . }}
+
+    {{ partial "article/components/related-contents" . }}
+
+    {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}}
+        {{ partial "comments/include" . }}
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
+
+    {{- partialCached "article/components/photoswipe.html" . -}}
+{{ end }}
