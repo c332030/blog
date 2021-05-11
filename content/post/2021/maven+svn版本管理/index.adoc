@@ -45,15 +45,15 @@ date: 2021-03-21 18:48:00
 
 这个项目取名：c-commons，名字参考了 apache 的 commons 项目，顾名思义，存放公共代码的地方
 
-image::.images/commons-modules.png[]
+image::./.images/commons-modules.png[]
 
 ==== c-mall
 
 这个是一个商城的项目，这个项目要依赖 c-commons 中的模块：
 
-image::.images/mall-modules.png[]
+image::./.images/mall-modules.png[]
 
-image::.images/mall-manager-modules.png[]
+image::./.images/mall-manager-modules.png[]
 
 === 1. 调整依赖
 
@@ -66,43 +66,43 @@ image::.images/mall-manager-modules.png[]
 
 如果是第一种情况，我们在根目录的 pom.xml 中添加 dependencyManagement 标签，把这些会被多次引用的模块添加到其中，如图：
 
-image::.images/c-commons-pom.png[]
+image::./.images/c-commons-pom.png[]
 
-image::.images/c-commons-dependencyManagement.png[]
+image::./.images/c-commons-dependencyManagement.png[]
 
 而在当前项目其他模块中使用时，可以不指定版本号，此时 idea 左侧出现蓝色跳转符号：
 
-image::.images/c-commons-service-dependencies.png[]
+image::./.images/c-commons-service-dependencies.png[]
 
 当鼠标悬浮在符号上时，可以看到此处虽然没有指定版本号，但是却能够找到确切的版本，这个版本号是在 dependencyManagement 中定义的、
 
-image::.images/c-commons-service-dependencies-notice.png[]
+image::./.images/c-commons-service-dependencies-notice.png[]
 
 我这里还建了一个名为 c-commons-bom 的项目，目的是方便其他项目依赖 c-commons 和统一依赖版本。
 
 可以看到这个项目只有一个 pom.xml 文件：
 
-image::.images/c-commons-bom.png[]
+image::./.images/c-commons-bom.png[]
 
 细心的人会发现，我在 c-commons 的 pom.xml 文件中加了星号的注释，这样的注释是成对的，包裹着其他项目会依赖的模块。我把这些模块复制到 c-commons-bom 中。
 
-image::.images/c-commons-pom-star.png[]
+image::./.images/c-commons-pom-star.png[]
 
-image::.images/c-commons-bom-pom.png[]
+image::./.images/c-commons-bom-pom.png[]
 
 对 c-commons 和 c-commons-bom 项目分别执行 mvn clean install 命令，把项目存到本地仓库中。
 
 在 c-mall 中以 type=pom 和 scope=import 的方式引用：
 
-image::.images/mall-pom.png[]
+image::./.images/mall-pom.png[]
 
 在 c-mall 中引用 c-commons 中的模块时，可以发现，也不需指定版本号了。
 
-image::.images/mall-entity-pom.png[]
+image::./.images/mall-entity-pom.png[]
 
 点进去，版本号是在本地仓库 c-commons-bom 项目中指定的：
 
-image::.images/mall-entity-dependency-c-commons-entity.png[]
+image::./.images/mall-entity-dependency-c-commons-entity.png[]
 
 dependencyManagement 中还可以加入其他依赖并添加到 c-commons-bom 中，比如 fastjson，这样引入 c-commons 项目模块时，可以统一所有项目的 fastjson 版本。
 
@@ -120,15 +120,15 @@ https://www.mojohaus.org/versions-maven-plugin/
 
 执行命令时，会提示输入新的版本号：
 
-image::.images/maven-versions-set.png[]
+image::./.images/maven-versions-set.png[]
 
 执行完会生成 `.versionsBackup` 的备份文件，用于回滚版本号
 
-image::.images/maven-versions-set-result.png[]
+image::./.images/maven-versions-set-result.png[]
 
 回滚：
 
-image::.images/maven-versions-revert.png[]
+image::./.images/maven-versions-revert.png[]
 
 因为其他同事之前手动上传过 jar 到私服，指定了版本号，为了不冲突，需要指定一个新的版本号，命令如下：
 
@@ -202,27 +202,27 @@ mvn release:prepare ^
 
 没有特殊要求，按三次回车就好了。
 
-image::.images/maven-release-prepare.png[]
+image::./.images/maven-release-prepare.png[]
 
 执行完可以看到 tags 下多出新分支：
 
-image::.images/svn-tags.png[]
+image::./.images/svn-tags.png[]
 
 tags 下的分支版本号是发行类型的（没有后缀 -SNAPSHOT），scm 标签下的链接也更新了。
 
-image::.images/svn-tags-1.0.0.png[]
+image::./.images/svn-tags-1.0.0.png[]
 
 branches 下主分支版本号已更新：
 
-image::.images/svn-branches-trunk-root-pom.png[]
+image::./.images/svn-branches-trunk-root-pom.png[]
 
-image::.images/svn-branches-trunk-root-pom-modules.png[]
+image::./.images/svn-branches-trunk-root-pom-modules.png[]
 
-image::.images/svn-branches-trunk-root-pom-module-dao.png[]
+image::./.images/svn-branches-trunk-root-pom-module-dao.png[]
 
 需要注意的是，如果执行过程中发送错误，同时有部分代码已经提交了 svn，可以执行 `mvn release:rollback` 进行回滚，我这里就出错了。可以看到，编号为 11 的提交是执行 `prepare` 命令，编号为 12 的提交是 `rollback` 命令：
 
-image::.images/svn-history.png[]
+image::./.images/svn-history.png[]
 
 == 发布
 
