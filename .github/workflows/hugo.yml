@@ -21,4 +21,4 @@ jobs:
           COMMAND: ${{ secrets.COMMAND }}
         with:
           source-repo: git@github.com:${{ github.repository_owner }}/${{ github.event.repository.name }}.git
-          build-repo: git@github.com:${{ github.repository_owner }}/${{ github.actor }}.github.io.git
+          build-repo: git@github.com:${{ github.repository_owner }}/${{ github.repository_owner }}.github.io.git
