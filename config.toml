@@ -1,0 +1,98 @@
+baseurl = "https://c332030.com"
+languageCode = "zh-cn"
+theme = "stack"
+paginate = 5
+title = "c332030"
+disqusShortname = "c332030"
+googleAnalytics = "UA-155324421-2"
+DefaultContentLanguage = "zh-cn"
+buildfuture = true
+
+[permalinks]
+post = "/p/:year/:month/:slug/"
+page = "/:slug/"
+
+[params]
+mainSections = [ "post" ]
+featuredImageField = "image"
+rssFullContent = true
+
+[params.footer]
+since = 2_020
+
+[params.dateFormat]
+published = "2006-01-02"
+lastUpdated = "2006-01-02"
+
+[params.sidebar]
+emoji = "🍥"
+subtitle = "登高者必自卑，行远者必自迩，在这个世界上，重要的不是你正站在哪里，而是你正朝什么方向移动！"
+
+[params.sidebar.avatar]
+local = false
+src = "/favicon.ico"
+
+[params.article]
+math = false
+
+[params.article.license]
+enabled = true
+default = "Licensed under CC BY-NC-SA 4.0"
+
+[params.comments]
+enabled = true
+provider = "disqus"
+
+[params.comments.utterances]
+issueTerm = "pathname"
+
+[params.comments.remark42]
+
+[params.widgets]
+enabled = [ "search", "archives", "tag-cloud" ]
+
+[params.widgets.archives]
+limit = 5
+
+[params.widgets.tagCloud]
+limit = 10
+
+[params.opengraph.twitter]
+card = "summary_large_image"
+
+[params.defaultImage.opengraph]
+enabled = false
+local = false
+
+[params.colorScheme]
+toggle = true
+default = "auto"
+
+[params.imageProcessing.cover]
+enabled = true
+
+[params.imageProcessing.content]
+enabled = true
+
+[[menu.main]]
+identifier = "home"
+name = "主页"
+url = "/"
+weight = -100
+pre = "home"
+
+[related]
+includeNewer = true
+threshold = 60
+toLower = false
+
+[[related.indices]]
+name = "tags"
+weight = 100
+
+[[related.indices]]
+name = "categories"
+weight = 200
+
+[markup.highlight]
+noClasses = false
