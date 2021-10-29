@@ -62,11 +62,9 @@ image::packages-txt.png[]
 
 == 找出应用对应的包名
 
-下载创建快捷方式应用，去酷安下载最新版或者下载我这分享的版本：
+下载创建快捷方式应用：
 
 link:https://www.coolapk.com/apk/com.x7890.shortcutcreator[]
-
-link:创建快捷方式.apk[]
 
 打开 `创建快捷方式` 应用，右上角勾上显示系统应用
 
