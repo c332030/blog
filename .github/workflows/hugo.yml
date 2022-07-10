@@ -11,12 +11,10 @@ on:
 
 jobs:
   hugo:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: cc332030/hugo/.github/workflows/hugo-build.yml@master
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          COMMAND: ${{ secrets.COMMAND }}
-        with:
-          source: git@github.com:${{ github.repository }}.git
-          build: git@github.com:${{ github.actor }}/${{ github.actor }}.github.io.git
+    uses: cc332030/hugo/.github/workflows/hugo-build.yml@master
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      COMMAND: ${{ secrets.COMMAND }}
+    with:
+      source: git@github.com:${{ github.repository }}.git
+      build: git@github.com:${{ github.actor }}/${{ github.actor }}.github.io.git
