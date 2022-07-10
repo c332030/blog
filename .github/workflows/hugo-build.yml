@@ -1,5 +1,5 @@
 
-name: hugo
+name: hugo-build
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  hugo:
+  build:
     uses: cc332030/hugo/.github/workflows/hugo-build.yml@master
     secrets:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
