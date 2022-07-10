@@ -13,12 +13,10 @@ jobs:
   hugo:
     runs-on: ubuntu-latest
     steps:
-      - uses: cc332030/hugo-asciidoctor-action@master
+      - uses: cc332030/hugo/.github/workflows/hugo-build.yml@master
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          USER: ${{ github.actor }}
-          EMAIL: ${{ github.actor }}@gmail.com
           COMMAND: ${{ secrets.COMMAND }}
         with:
-          source-repo: git@github.com:${{ github.repository }}.git
-          build-repo: git@github.com:${{ github.actor }}/${{ github.actor }}.github.io.git
+          source: git@github.com:${{ github.repository }}.git
+          build: git@github.com:${{ github.actor }}/${{ github.actor }}.github.io.git
