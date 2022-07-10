@@ -18,7 +18,7 @@ date: 2022-05-20 22:00:00
 
 所有 Set-Cookie 后面都有感叹号，所以图片截的是 jsessionid 的
 
-image::img.jpg[]
+image::cookit-without-samesite.jpg[]
 
 经过查找资料发现，从 Chrome 51 起加个 SameSite 的属性，用于防御 跨站请求伪造（CSRF），这个值默认是 None，也就是允许所有第三方 Cookie，然而从 Chrome 80 开始，SameSite 的默认值变成了 Lax。
 
@@ -132,9 +132,9 @@ public class CookieUtils {
 
 如果在 https 的网络下设置 SameSite=None 但没有设置 Secure 属性时，也会出现感叹号，不过这个时候是有提示的。
 
-image::img.png[]
+image::cookit-with-samesite-none.png[]
 
-image::img_1.png[]
+image::cookit-with-samesite-none-warning.png[]
 
 这个时候 token 的 Cookie 是管用了，可是 jsessionid 的 Cookie 没有加上 SameSite 属性，我只能换一种方案。
 
@@ -317,7 +317,7 @@ public class SameSiteControllerAdvice implements ResponseBodyAdvice<Object> {
 
 这次终于成功了，升级最新版微信开发工具测试后，Cookie 传递正常，来张成功的截图。
 
-image::image-2022-07-10-15-18-17-793.png[]
+image::cookit-with-samesite-none-secure.png[]
 
 === 方案4，使用 Spring Boot 自带的功能
 
