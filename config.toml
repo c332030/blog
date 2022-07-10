@@ -33,7 +33,9 @@ local = false
 src = "/favicon.ico"
 
 [params.article]
+toc = true
 math = false
+readingTime = true
 
 [params.article.license]
 enabled = true
