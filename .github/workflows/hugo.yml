@@ -13,7 +13,7 @@ jobs:
   hugo:
     runs-on: ubuntu-latest
     steps:
-      - uses: cc332030/hugo-asciidoctor-action@1.0.0
+      - uses: cc332030/hugo-asciidoctor-action@master
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           USER: ${{ github.actor }}
