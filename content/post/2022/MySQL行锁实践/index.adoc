@@ -1,0 +1,15 @@
+---
+title: "MySQL行锁实践"
+description: ""
+featured_image: ""
+categories: ["后端"]
+tags: ["MySQL"]
+author: c332030
+date: 2022-09-13 22:00:00
+---
+
+== 发现问题
+
+以下几种情况都不满足
+
+. 主从架构，查询的从库，数据不是最新
