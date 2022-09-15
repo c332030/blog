@@ -14,7 +14,10 @@ jobs:
     uses: cc332030/hugo-asciidoctor-action/.github/workflows/hugo-build.yml@master
     secrets:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      COMMAND: ${{ secrets.COMMAND }}
+      HOST: ${{ secrets.HOST }}
+      PORT: ${{ secrets.PORT }}
+      ORIGIN_PATH: public
+      REMOTE_PATH: /home/html/root
     with:
       source: git@github.com:${{ github.repository }}.git
       build: git@github.com:${{ github.actor }}/${{ github.actor }}.github.io.git
